@@ -1,42 +1,54 @@
 
 Xcoin
 ============================
+No premine. No IPO.
+
+Specifications
+
+    Block time: 60 seconds
+    Difficulty retarget: every block
+    Min transaction fee: 0.01 XCO
+    Confirmations: 10, maturity: 100
+    P2P port: 14641, RPC port: 14642
 
 
-    What Is Xcoin? 
-----------------------------
+Proof of stake
 
-Xcoin is a Proof of Stake Cryptocurrency. The first two weeks after release will consist of a two week Proof of Work period.
+    Min stake age: 8 hours, Max age 24 hours
+    Block reward: 3% interest per year + 10 coins + transaction fees paid out every time you find a block
+    Your reward before the fees is averaged up to the nearest 0.999
+    Max reward 20 coins per block before the fees
+    To maximize staking yield, combine your inputs after receiving a stake for 0.01 +fees
+    0.01+fee reward means your inputs have split too much (or your input is too small). Send your coins back to your self to combine your inputs so you can have a bigger input. If you are staking a small amount of coins you will get this low reward too because the input is too small.
+    Transaction fees are earned by block finders
 
-Why Xcoin?
---------------------------
 
-It is the goal of the Xcoin developers for everyone involved in the Cryptocurrency revolution to have access to the exciting developments that have been taking place. An ASIC-friendly, mixed PoW/PoS coin with eventual anonymous transaction capabilities has been sorely overlooked.
+Proof of work
 
-The Xcoin developers believe that progress should never be held back. ASICs use much less energy than GPUs and are orders of magnitude more efficient. The energy used mining Scrypt coins for years to prolong the days of GPU mining was a truly enormous waste of resources on a global scale. Why hold back progress? Xcoin encourages it.
+    Algo: SHA256
+    Block reward: 500 XCO, no halving
+    Max height: 30000 (after this network will not accept PoW)
+    Transaction fees are paid to miners
 
-Xcoin Specifications
---------------------------
 
-**Coin Generation**: Pure Proof of Stake with Proof of Work period upon release
+Donate
+Please donate to further developement XQLAnof6ftmMXDTJFKsKrAKUGCb2MtmzLE
 
-**Proof of Work Algorithm**: SHA-256
+Pools
+https://www.ipominer.com/stats?curr=xco
+https://xco.coin-miners.info/
+https://xco.suprnova.cc
 
-**Total Number of Coins**: 22 million
+Wallets
+Mac wallet: http://www.mediafire.com/download/2d1m2ib5mb2i3ie/Xcoin-Qt.zip
+Windows wallet: https://mega.co.nz/#!mckS1QyC!JfD1SuaKGD0oQEFZPTuJTppy902a2bJ3jOuBa7TKHtI
+Linux wallet: https://mega.co.nz/#!rdkESBBA!2joS-tyHxEnvqw2EaeWDk-5e21wZoXulUJIdcTi_Vlg
+Source: https://github.com/el3ab/xcoin
 
-**PoW Block Reward**: 80 XCO
+Exchanges
+Sell or buy XCO for DRK on C-CEX https://c-cex.com/?p=xco-drk
+Sell or buy XCO for BTC on C-CEX https://c-cex.com/?p=xco-btc
+Sell or buy XCO for BTC on Yobit https://yobit.net/en/trade/XCO/BTC
 
-**PoW Blocks**: 20,160
-                          
-**PoW Target Blocktime**: 1 minute
-
-**RPC Port**: 14642
-
-**Port**: 14641
-
-**Time to Maturity**: 100 Confirmations
-
-**Proof of Stake Reward**: 5% per year
-
-**Minimum Coin Stake Age**: 8 hours
-
+Games
+Dice game https://yobit.net/en/dice/XCO
