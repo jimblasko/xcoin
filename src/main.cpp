@@ -996,21 +996,24 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 {
     int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8); //3% per year interest compounded everytime we stake
-    
-    //first divide what we get by 100000000 so we don't have to write COIN all the time after it.
-    //we multiply it by 100000000 later. 
-    nSubsidy /= 100000000;
-    // 10 coins extra stake reward to give staking incentive 
-    nSubsidy += 10; 
 
-        //need more coins in the input to get the bigger rewards 
-        if (nSubsidy < 10.010) nSubsidy = 0.010; 
+    //first divide what we get by 100000000 so we don't have to write COIN all the time after it.
+    //we multiply it by 100000000 later.
+    nSubsidy /= 100000000;
+
+    if (pindexBest->nHeight < 34000)
+    {
+    // 10 coins extra stake reward to give staking incentive
+    nSubsidy += 10;
+
+        //need more coins in the input to get the bigger rewards
+        if (nSubsidy < 10.010) nSubsidy = 0.010;
         //average up to nearest 1.000 to reward staking
         //but minus .001 so it does not trip over itself
         //in this part
-        if (nSubsidy >= 10.010 && nSubsidy < 11.000) nSubsidy = 10.999; 
-        if (nSubsidy >= 11.000 && nSubsidy < 12.000) nSubsidy = 11.999; 
-        if (nSubsidy >= 12.000 && nSubsidy < 13.000) nSubsidy = 12.999; 
+        if (nSubsidy >= 10.010 && nSubsidy < 11.000) nSubsidy = 10.999;
+        if (nSubsidy >= 11.000 && nSubsidy < 12.000) nSubsidy = 11.999;
+        if (nSubsidy >= 12.000 && nSubsidy < 13.000) nSubsidy = 12.999;
         if (nSubsidy >= 13.000 && nSubsidy < 14.000) nSubsidy = 13.999;
         if (nSubsidy >= 14.000 && nSubsidy < 15.000) nSubsidy = 14.999;
         if (nSubsidy >= 15.000 && nSubsidy < 16.000) nSubsidy = 15.999;
@@ -1020,17 +1023,75 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
         if (nSubsidy >= 19.000 && nSubsidy < 20.000) nSubsidy = 20.000;
         //we need 480 blocks found every 8 hours
         //so put a limit on the maximum reward to
-        //give people incentive to split 
-        //up their inputs if they have a ton of coins 
+        //give people incentive to split
+        //up their inputs if they have a ton of coins
         //that would have gave over 10.000 coin reward
         if (nSubsidy >= 20.000) nSubsidy = 20.000;
+        }
+        else
+        {
+        nSubsidy *= 30; //90% interest per year instead of 3%
+        nSubsidy += 10;
+        //lower limit
+        if (nSubsidy < 10.005) nSubsidy = 0.010;
+        //average up to nearest 1.000 to reward staking
+        //but minus .001 so it does not trip over itself
+        //in this part
+        if (nSubsidy >= 10.005 && nSubsidy < 11.000) nSubsidy = 10.999;
+        if (nSubsidy >= 11.000 && nSubsidy < 12.000) nSubsidy = 11.999;
+        if (nSubsidy >= 12.000 && nSubsidy < 13.000) nSubsidy = 12.999;
+        if (nSubsidy >= 13.000 && nSubsidy < 14.000) nSubsidy = 13.999;
+        if (nSubsidy >= 14.000 && nSubsidy < 15.000) nSubsidy = 14.999;
+        if (nSubsidy >= 15.000 && nSubsidy < 16.000) nSubsidy = 15.999;
+        if (nSubsidy >= 16.000 && nSubsidy < 17.000) nSubsidy = 16.999;
+        if (nSubsidy >= 17.000 && nSubsidy < 18.000) nSubsidy = 17.999;
+        if (nSubsidy >= 18.000 && nSubsidy < 19.000) nSubsidy = 18.999;
+        if (nSubsidy >= 19.000 && nSubsidy < 20.000) nSubsidy = 19.999;
+        if (nSubsidy >= 20.000 && nSubsidy < 21.000) nSubsidy = 20.999;
+        if (nSubsidy >= 21.000 && nSubsidy < 22.000) nSubsidy = 21.999;
+        if (nSubsidy >= 22.000 && nSubsidy < 23.000) nSubsidy = 22.999;
+        if (nSubsidy >= 23.000 && nSubsidy < 24.000) nSubsidy = 23.999;
+        if (nSubsidy >= 24.000 && nSubsidy < 25.000) nSubsidy = 24.999;
+        if (nSubsidy >= 25.000 && nSubsidy < 26.000) nSubsidy = 25.999;
+        if (nSubsidy >= 26.000 && nSubsidy < 27.000) nSubsidy = 26.999;
+        if (nSubsidy >= 27.000 && nSubsidy < 28.000) nSubsidy = 27.999;
+        if (nSubsidy >= 28.000 && nSubsidy < 29.000) nSubsidy = 28.999;
+        if (nSubsidy >= 29.000 && nSubsidy < 30.000) nSubsidy = 29.999;
+        if (nSubsidy >= 30.000 && nSubsidy < 31.000) nSubsidy = 30.999;
+        if (nSubsidy >= 31.000 && nSubsidy < 32.000) nSubsidy = 31.999;
+        if (nSubsidy >= 32.000 && nSubsidy < 33.000) nSubsidy = 32.999;
+        if (nSubsidy >= 33.000 && nSubsidy < 34.000) nSubsidy = 33.999;
+        if (nSubsidy >= 34.000 && nSubsidy < 35.000) nSubsidy = 34.999;
+        if (nSubsidy >= 35.000 && nSubsidy < 36.000) nSubsidy = 35.999;
+        if (nSubsidy >= 36.000 && nSubsidy < 37.000) nSubsidy = 36.999;
+        if (nSubsidy >= 37.000 && nSubsidy < 38.000) nSubsidy = 37.999;
+        if (nSubsidy >= 38.000 && nSubsidy < 39.000) nSubsidy = 38.999;
+        if (nSubsidy >= 39.000 && nSubsidy < 40.000) nSubsidy = 39.999;
+        if (nSubsidy >= 40.000 && nSubsidy < 41.000) nSubsidy = 40.999;
+        if (nSubsidy >= 41.000 && nSubsidy < 42.000) nSubsidy = 41.999;
+        if (nSubsidy >= 42.000 && nSubsidy < 43.000) nSubsidy = 42.999;
+        if (nSubsidy >= 43.000 && nSubsidy < 44.000) nSubsidy = 43.999;
+        if (nSubsidy >= 44.000 && nSubsidy < 45.000) nSubsidy = 44.999;
+        if (nSubsidy >= 45.000 && nSubsidy < 46.000) nSubsidy = 45.999;
+        if (nSubsidy >= 46.000 && nSubsidy < 47.000) nSubsidy = 46.999;
+        if (nSubsidy >= 47.000 && nSubsidy < 48.000) nSubsidy = 47.999;
+        if (nSubsidy >= 48.000 && nSubsidy < 49.000) nSubsidy = 48.999;
+        if (nSubsidy >= 49.000 && nSubsidy < 50.000) nSubsidy = 50.000;
+        //limit , max reward before txfees 50 coins
+        if (nSubsidy >= 50.000) nSubsidy = 50.000;
+
+        // yearly decline of production by 12.5% per year
+        for(int i = 525600; i <= pindexBest->nHeight; i += 525600) nSubsidy -= nSubsidy/8;
+
+        }
+
         //multiply nSubsidy by 100000000
         nSubsidy *= COIN;
 
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
-    
+
     return nSubsidy + nFees;
 }
 
